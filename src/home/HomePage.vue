@@ -9,7 +9,8 @@
       />
     </div>
     <div class="get-started">
-      <a href="">Get started</a> building your first robot!
+      <router-link to="/build">Get started</router-link> building your first
+      robot!
     </div>
   </div>
 </template>
@@ -20,7 +21,7 @@ export default {
   props: {
     msg: String,
   },
-};
+}
 </script>
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
