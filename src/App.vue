@@ -17,6 +17,12 @@
           User: {{ user.name }}
           <button @click="changeUserName()">Change</button>
         </li>
+        <li class="nav-item cart">
+          <router-link class="nav-link" :to="{ name: 'Cart' }" exact
+            >Cart</router-link
+          >
+          <div class="cart-items">{{ cart.length }}</div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -33,8 +39,8 @@
 
 <script>
 // import HomePage from './home/HomePage.vue';
-import RobotBuilder from './build/RobotBuilder.vue'
-import Search from './search/Search.vue'
+// import RobotBuilder from './build/RobotBuilder.vue'
+// import Search from './search/Search.vue'
 
 export default {
   name: 'App',
@@ -50,6 +56,11 @@ export default {
   methods: {
     changeUserName() {
       this.user.name = 'Fred'
+    },
+  },
+  computed: {
+    cart() {
+      return this.$store.state.cart
     },
   },
 }
@@ -110,9 +121,13 @@ nav ul {
   list-style-type: none;
 }
 .nav-profile {
-  position: absolute;
-  right: 15px;
-  padding: 10px 0;
+  position: relative;
+  padding: 10px;
+}
+.nav-item.cart {
+  position: relative;
+  margin-left: auto;
+  border-right: none;
 }
 .router-link-active {
   color: white;
@@ -127,5 +142,16 @@ nav ul {
   background-color: #aaa;
   width: 100px;
   min-height: 300px;
+}
+.cart-items {
+  position: absolute;
+  top: -5px;
+  right: -9px;
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 100px;
+  background-color: mediumseagreen;
 }
 </style>
